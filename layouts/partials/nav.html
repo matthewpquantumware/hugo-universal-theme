@@ -44,6 +44,8 @@
                     {{ end }}
                   {{ end }}
 
+             
+                  
                   {{ if .HasChildren }}
                     <!-- Check if the first child marks a menu section identifier -->
                     {{ $hasSections := (hasPrefix (index .Children 0).Identifier "section.") }}
@@ -135,7 +137,10 @@
                     </li>
                   {{ else }}
                   <li class="dropdown {{ $active }}">
-                    <a href="{{ .URL }}">{{ .Name }}</a>
+                    <a href="{{ .URL }}"
+                     {{ if eq .Params.external true }} target="_blank"{{ end }}>{{ .Name }}
+                     {{ if eq .Params.external true }}<i class="fas fa-external-link-alt"></i>{{ end }}
+                    </a>
                   </li>
                   {{ end }}
                   {{ end }}
